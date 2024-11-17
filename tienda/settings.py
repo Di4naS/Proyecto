@@ -20,7 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = 'django-insecure-kj$acy77(skpjalw%ptv*ri%8t_pq7o4(=_u-(a=t*l3z-f#pm'
+=======
+SECRET_KEY = 'django-insecure-j6ywu^+0lbmdlzl^=4zjmz1e7nn88x3&7gvmhzf%bx9_%)xx3&'
+>>>>>>> ff136ca41d4557963a8e55a041aba5c7619bc678
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,8 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+<<<<<<< HEAD
     'services',
     'rest_framework',
+=======
+>>>>>>> ff136ca41d4557963a8e55a041aba5c7619bc678
 ]
 
 MIDDLEWARE = [
@@ -119,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
 #STATIC_ROOT = 'static'
 
 
@@ -128,10 +136,15 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = 'media'
+=======
+>>>>>>> ff136ca41d4557963a8e55a041aba5c7619bc678
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 
 AUTH_PROFILE_MODULE = 'home.Perfil'
+=======
+>>>>>>> ff136ca41d4557963a8e55a041aba5c7619bc678

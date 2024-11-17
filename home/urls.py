@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.urls import path, include
 from django.contrib import admin
 from .views import vista_about
@@ -38,3 +39,15 @@ urlpatterns = [
 
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+from django.urls import path 
+from .views import vista_about
+from .views import vista_biografia
+from .views import vista_inicio
+
+urlpatterns = [
+    path ('inicio/', vista_inicio),
+    path ('about/', vista_about),
+    path ('bio/', vista_biografia)
+]
+>>>>>>> ff136ca41d4557963a8e55a041aba5c7619bc678
