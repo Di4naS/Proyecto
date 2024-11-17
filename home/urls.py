@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import path, include
+from django.contrib import admin
 from .views import vista_about
 from .views import vista_bio
 from .views import vista_inicio
@@ -30,6 +31,8 @@ urlpatterns = [
     path('logout/', vista_logout, name='vista_logout'),
     path('register/', vista_register, name='vista_register'),
     path('perfil/', (vista_perfil), name='vista_perfil'),
+    path('admin/', admin.site.urls),
+    path('api/', include('services.urls')),
 
 
 
