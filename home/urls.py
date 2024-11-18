@@ -13,6 +13,7 @@ from .views import vista_logout
 from .views import vista_register
 from .views import vista_perfil
 from .views import vista_raiz
+from .views import thanks_for_register
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,6 +30,7 @@ urlpatterns = [
     path('eliminar_producto/<int:id_prod>/', vista_eliminar_producto, name='vista_eliminar_producto'),   
     path('logout/', vista_logout, name='vista_logout'),
     path('register/', vista_register, name='vista_register'),
+    path('thanks/', thanks_for_register, name='thanks_for_register'),
     path('perfil/', vista_perfil, name='vista_perfil'),
     path('admin/', admin.site.urls),
     path('api/', include('services.urls')),

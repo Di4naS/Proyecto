@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Producto
-from .forms import agregar_producto_form, login_form, register_form
+from .forms import agregar_producto_form, login_form, RegisterForm
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.contrib import messages
 
@@ -21,6 +21,12 @@ def vista_bio(request):
 @login_required(login_url='/login/')
 def vista_inicio(request):
     return render(request, 'inicio.html')
+
+def vista_perfil(request):
+    return render(request, 'perfil.html')
+
+def vista_raiz(request):
+    return redirect('vista_login')
 
 @login_required(login_url='/login/')
 def vista_lista_producto(request):
@@ -81,6 +87,7 @@ def vista_eliminar_producto(request, id_prod):
 
 # Login y Logout
 def vista_login(request):
+    msj = ""
     if request.method == "POST":
         formulario = login_form(request.POST)
         if formulario.is_valid():
@@ -104,9 +111,25 @@ def vista_logout(request):
 def vista_register(request):
     msj = ""
     if request.method == 'POST':
-        formulario = register_form(request.POST)
+        formulario = RegisterForm(request.POST)  # Usar la clase correcta con la primera letra mayúscula
         if formulario.is_valid():
-            usuario = formulario.cleaned_data['username']
-            correo = formulario.cleaned_data['email']
+            # Obtener los datos del formulario
+            username = formulario.cleaned_data['username']
+            email = formulario.cleaned_data['email']
             password_1 = formulario.cleaned_data['password_1']
-      
+            
+            # Crear el usuario
+            user = User.objects.create_user(username=username, email=email, password=password_1)
+            user.save()  # Guardar en la base de datos
+            
+            # Opcional: Redirigir a una página de éxito, como la página de login
+            return redirect('thanks_for_register')  # O la URL que desees
+            
+    else:
+        formulario = RegisterForm()
+
+    # Si el método no es POST, o si el formulario no es válido, mostramos el formulario vacío o con errores
+    return render(request, 'register.html', {'formulario': formulario, 'msj': msj})
+
+def thanks_for_register(request):
+    return render(request, 'thanks_for_register.html')

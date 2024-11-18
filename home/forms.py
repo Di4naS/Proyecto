@@ -12,17 +12,16 @@ class agregar_producto_form(forms.ModelForm):
         model = Producto
         fields ='__all__'
 
-class login_form (forms.Form):
-    usuario = forms.CharField(widget=forms.TextInput())
-    clave = forms.CharField(widget=forms.PasswordInput(render_value=False))
+class login_form(forms.Form):
+    usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Usuario', 'class': 'form-control'}))
+    clave = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña', 'class': 'form-control'}))
 
-class register_form (forms.Form):
+class RegisterForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput())
     email = forms.EmailField(widget=forms.TextInput())
     password_1 = forms.CharField(label='Password', widget=forms.PasswordInput(render_value=False))
     password_2 = forms.CharField(label='Confirmar Password', widget=forms.PasswordInput(render_value=False))
 
-    #los métodos clean_ actúan como decoradores personalizados para la validación de campos específicos
     def clean_username(self):
         username = self.cleaned_data['username']
         try:
@@ -39,7 +38,7 @@ class register_form (forms.Form):
             return email
         raise forms.ValidationError('Correo Electronico ya existe') 
     
-    def clean_password_2(self):#Hace la validacion del password_2
+    def clean_password_2(self):
         password_1 = self.cleaned_data.get('password_1')  
         password_2 = self.cleaned_data.get('password_2')
         
