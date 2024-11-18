@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -104,44 +103,10 @@ def vista_logout(request):
 # Registro de usuarios
 def vista_register(request):
     msj = ""
-   # formulario = register_form()
     if request.method == 'POST':
         formulario = register_form(request.POST)
         if formulario.is_valid():
             usuario = formulario.cleaned_data['username']
             correo = formulario.cleaned_data['email']
             password_1 = formulario.cleaned_data['password_1']
-            #password_2 = formulario.cleaned_data['password_2']
-            #if password_1 == password_2:
-            u = User.objects.create_user(username=usuario, email=correo, password=password_1)
-            u.save()
-            return render(request, 'thanks_for_register.html', locals())
-        else:
-                msj = "Por favor corrige los errores del formulario"
-    else: 
-        formulario = register_form()
-        
-    return render(request, 'register.html', locals())
-
-@login_required(login_url='/login/')
-def vista_perfil(request):
-    return render(request, 'perfil.html', locals())
-
-def vista_raiz(request):
-    return redirect('vista_login') 
-
-
-=======
-from django.shortcuts import render
-
-# Create your views here.
-def vista_about(request):
-    return render(request, 'about.html')
-
-def vista_biografia(request):
-    return render(request, 'bio.html')
-
-
-def vista_inicio(request):
-    return render(request, 'inicio.html')
->>>>>>> ff136ca41d4557963a8e55a041aba5c7619bc678
+      
