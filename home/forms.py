@@ -12,6 +12,13 @@ class agregar_producto_form(forms.ModelForm):
         model = Producto
         fields ='__all__'
 
+ #class Meta:
+  #      model = Producto
+   #     fields = ['nombre', 'descripcion', 'status', 'precio', 'stock', 'categorias', 'marca', 'foto']
+    #    widgets = {
+     #       'precio': forms.TextInput(attrs={'readonly': 'readonly'}),
+      #  }
+
 class login_form(forms.Form):
     usuario = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Usuario', 'class': 'form-control'}))
     clave = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña', 'class': 'form-control'}))
